@@ -1,94 +1,86 @@
-# Advanced Databases - Practice 2
+# Advanced Databases - Assignment 2
 
-College project for Advanced Databases at U-TAD
+**AD-ODM (Assignment 2)** demonstrates practical usage of the core ODM through real-world queries for the Advanced Databases college project at U-TAD.
 
-Authors:
+**Academic Project Details:**
+- **Degree**: Software Engineering
+- **University**: U-tad
+- **Subject**: Advanced Databases
+- **Authors**: Emilie Dubief, Itziar Morales Rodríguez
 
-- Emilie Dubief
-- Itziar Morales Rodríguez
+**Part 2/3**: Core ODM (assignment-1) → **Usage implementation** (this branch) → Redis caching (assignment-3).
 
-Toolset:
+## Key Features
+- Jupyter notebook (`queries.ipynb`) executing complex ODM queries.
+- Real-world data operations on users, companies, educational centers.
+- Multiple environment support (Conda + Nix).
+- Geospatial queries leveraging `geo.py` functionality.
 
-- Python (3.12)
-- MongoDB
-- Nix (dependencies)
-- LaTeX (documentation)
+## Tech Stack
+- **Language**: Python 3.12
+- **Database**: MongoDB
+- **Notebook**: Jupyter Lab
+- **Environments**: Conda (`environment.yml`), Nix (`shell.nix`)
+- **Documentation**: LaTeX (`doc.pdf`)
 
-## Project structure
-
-- The necessary files for the ODM are in the `ODM/` folder.
-- `data/` contains mock data for users, companies and educational centers plus
-  the model schemas.
-- `queries.ipynb` is the jupyter notebook that runs a series of queries
-- `nix.shell` only needed to install necessary python dependencies
-- `doc.pdf` contains a brief explanation of the project
-
+## Project Structure
 ```
 project_root/
-|-- ODM/
+|-- ODM/                 # Core ODM (from Assignment 1)
 |   |-- __init__.py
 |   |-- app.py
 |   |-- geo.py
 |   |-- model.py
-|-- data/
+|-- data/                # Mock datasets + schemas
 |   |-- users.json
 |   |-- companies.json
 |   |-- educational_centers.json
 |   |-- models.yml
+|-- queries.ipynb        # Main query notebook
+|-- environment.yml      # Conda environment
+|-- shell.nix           # Nix environment
 |-- README.md
-|-- queries.ipynb
-|-- environment.yml
-|-- nix.shell
 ```
 
-## Dependencies
+## Setup & Run
 
-If you don't have the Python dependencies installed locally, you can get them
-through the shell.nix file with the following commands:
-
-### Conda
-
-If you have conda, you can install the dependencies using:
-
+### Option 1: Conda (Recommended)
 ```bash
-# Create conda environment from YML file
+# Create & activate environment
 conda env create -f environment.yml
 conda activate ODMEmilieItziar
-```
 
-In case the wrong kernel is used, run the following command to get the right
-kernel to be used (change Kernel in Jupyter to the proper one)
-
-```bash
+# Register Jupyter kernel
 python -m ipykernel install --user --name ODMEmilieItziar --display-name "Python (ODMEmilieItziar)"
+
+# Start Jupyter
+jupyter lab
 ```
 
-### Nix
-
-Using the nix package manager if you don't have conda:
-
+### Option 2: Nix
 ```bash
-# Install nix (authenticate with sudo)
+# Install Nix
 sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
 
-# Initialize nix-shell environment using shell.nix
+# Enter environment & start Jupyter
 nix-shell
-
-# Run jupyter notebook
 jupyter lab
 ```
 
-## How to Run
+**Prerequisites**: MongoDB service running locally.
 
-- Make sure you have `mongodb` running as a service in your system.
-- Make sure you have the dependencies installed.
-- Make sure you have `jupyter lab` or `jupyter notebook` running.
+## Usage
+1. Open `queries.ipynb` in Jupyter Lab.
+2. Run all cells sequentially (restart if rendering issues occur).
+3. Explore ODM queries on mock educational platform data.
 
-```bash
-jupyter lab
-```
+## Troubleshooting
+- **Kernel issues**: Re-register kernel (Conda instructions above).
+- **Rendering problems**: Restart kernel → Run All Cells.
 
-## Issues
+## Progression Across Branches
+- **assignment-1**: Core ODM design
+- **assignment-2** (current): Query implementation & usage
+- **assignment-3**: Redis caching optimization
 
-Sometimes the jupyter notebook doesn't render stuff properly, re run all cells
-whenever this happens.
+See `doc.pdf` for detailed query explanations.
