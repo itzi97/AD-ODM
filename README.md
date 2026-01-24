@@ -1,54 +1,65 @@
-# Advanced Databases - Practice 1
+# Advanced Databases - Assignment 1
 
-College project for Advanced Databases at U-TAD
+**AD-ODM (Assignment 1)** is the foundational Python MongoDB ODM implementation for a progressive Advanced Databases college project at U-TAD.
 
-Authors:
+**Academic Project Details:**
+- **Degree**: Software Engineering
+- **University**: U-tad
+- **Subject**: Advanced Databases
+- **Authors**: Emilie Dubief, Itziar Morales Rodríguez
 
-- Emilie Dubief
-- Itziar Morales Rodríguez
+**Part 1/3**: Core ODM design (this branch) → Usage implementation → Redis caching.
 
-Toolset:
+## Key Features
+- Object-Document Mapping (ODM) for MongoDB in pure Python.
+- Geographic data handling (`geo.py`) for location-based queries.
+- Model definitions via YAML schemas (`models.yml`).
+- Mock data loading for users, companies, educational centers.
 
-- Python (3.12)
-- MongoDB
-- Nix (dependencies)
-- LaTeX (documentation)
+## Tech Stack
+- **Language**: Python 3.12
+- **Database**: MongoDB
+- **Dependencies**: Nix (environment management)
+- **Documentation**: LaTeX (`doc.pdf`)
 
-## Project structure
-
-- The necessary files for the ODM are in the `ODM/` folder.
-- `data/` contains mock data for users, companies and educational centers plus
-  the model schemas.
-- `nix.shell` only needed to install necessary python dependencies
-- `doc.pdf` contains a brief explanation of the project
-
+## Project Structure
 ```
 project_root/
-|-- ODM/
+|-- ODM/                 # Core ODM implementation
 |   |-- __init__.py
-|   |-- app.py
-|   |-- geo.py
-|   |-- model.py
-|-- data/
+|   |-- app.py          # Main application entrypoint
+|   |-- geo.py          # Geospatial functionality
+|   |-- model.py        # Model definitions & mapping
+|-- data/                # Mock datasets + schemas
 |   |-- users.json
 |   |-- companies.json
 |   |-- educational_centers.json
 |   |-- models.yml
 |-- README.md
-|-- ODM.py
-|-- doc.pdf
-|-- nix.shell
+|-- ODM.py              # Main executable
+|-- doc.pdf             # Project documentation
+|-- shell.nix           # Nix environment
 ```
 
-## Dependencies
+## Setup & Run
+1. **Install Nix** (if needed):
+   ```bash
+   sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
+   ```
 
-If you don't have the Python dependencies installed locally, you can get them
-through the shell.nix file with the following commands:
+2. **Enter development environment**:
+   ```bash
+   nix-shell
+   ```
 
-```bash
-# Install nix
-sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
+3. **Run the ODM**:
+   ```bash
+   python ODM.py
+   ```
 
-# Initialize nix-shell environemnt using shell.nix
-nix-shell
-```
+## Progression Across Branches
+- **assignment-1** (current): Core ODM design
+- **assignment-2**: Real-world application usage
+- **assignment-3**: Redis caching layer integration
+
+See `doc.pdf` for detailed technical explanation.
